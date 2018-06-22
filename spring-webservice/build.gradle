@@ -20,6 +20,13 @@ group = 'com.sample'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+jar {
+    baseName = 'spring-cache'
+    version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 repositories {
 	mavenCentral()
 	maven { url "https://repo.spring.io/snapshot" }
@@ -31,7 +38,13 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-amqp')
+	compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15'
 	runtime('mysql:mysql-connector-java')
 	compileOnly('org.projectlombok:lombok')
+	compile('org.springframework.boot:spring-boot-starter-cache')
+    compile group: 'net.sf.ehcache', name: 'ehcache', version: '2.10.3'
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+	// spring boot devtools dependency 추가
+	compile("org.springframework.boot:spring-boot-devtools")
 }
