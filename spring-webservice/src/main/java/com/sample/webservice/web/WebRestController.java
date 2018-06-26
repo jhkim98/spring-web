@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sample.webservice.rabbitmq.Producer;
-import com.sample.webservice.rabbitmq.SampleApplication;
+import com.sample.webservice.rabbitmq.SampleRabbitMq;
+import com.sample.webservice.redis.service.RedisService;
 
 @RestController
 public class WebRestController {
@@ -38,6 +39,19 @@ public class WebRestController {
     public String hello() {
         return "HelloWorld";
     }
+    
+    @Autowired
+	private RedisService redisService;
+	
+    @GetMapping("/putredis")
+    public String putredis() {
+    	
+    	Long cnt = redisService.getVisitCount();
+    	
+        return "Visit Cnt = [" + cnt + "]";
+    }
+    
+    
     
     
 }
